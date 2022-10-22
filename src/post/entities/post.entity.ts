@@ -1,6 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import slugify from 'slugify';
-import { Category } from "src/category/entities/category.entity";
+import { Category } from "../../category/entities/category.entity";
 
 @Entity('post')
 export class Post {
