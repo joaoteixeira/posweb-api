@@ -6,7 +6,7 @@ export class User {
   id: number;
 
   @Column()
-  nome: string;
+  name: string;
 
   @Column()
   email: string;
@@ -15,8 +15,8 @@ export class User {
   password: string;
 
   @CreateDateColumn()
-  createdAt!: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt!: Date;
+  updatedAt: Date;
 }
