@@ -7,7 +7,7 @@ import { providers } from 'src/providers';
 @Module({
   imports: [DatabaseModule],
   controllers: [CategoryController],
-  providers: [ ...providers, CategoryService],
+  providers: [...providers, CategoryService],
   exports: [CategoryService],
 })
 export class CategoryModule {}
