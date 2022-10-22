@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Tag } from 'src/tag/entities/tag.entity';
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from '../../category/entities/category.entity';
 
 @Entity('post')
@@ -27,7 +28,11 @@ export class Post {
   @Column()
   createdAt: Date;
 
-  @ManyToOne(type => Category)
+  @ManyToOne(type => Category, { eager: true })
   @JoinColumn()
   category: Category;
+
+  @ManyToMany(type => Tag)
+  @JoinColumn()
+  tags: Tag[];
 }

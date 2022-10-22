@@ -1,7 +1,8 @@
 import { DataSource } from 'typeorm';
 import { User } from '../user/entities/user.entity';
-import { Post } from 'src/post/entities/post.entity';
-import { Category } from 'src/category/entities/category.entity';
+import { Post } from '../post/entities/post.entity';
+import { Category } from '../category/entities/category.entity';
+import { Tag } from '../tag/entities/tag.entity';
 
 export const providers = [
   {
@@ -17,6 +18,11 @@ export const providers = [
   {
     provide: 'CATEGORY_REPOSITORY',
     useFactory: (dataSource: DataSource) => dataSource.getRepository(Category),
+    inject: ['DATA_SOURCE'],
+  },
+  {
+    provide: 'TAG_REPOSITORY',
+    useFactory: (dataSource: DataSource) => dataSource.getRepository(Tag),
     inject: ['DATA_SOURCE'],
   },
 ];

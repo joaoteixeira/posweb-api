@@ -12,4 +12,6 @@ export class CreatePostDto {
   publishedAt: Date;
 
   category: number;
+
+  tags?: string[];
 }

@@ -4,9 +4,10 @@ import { PostController } from './post.controller';
 import { DatabaseModule } from 'src/database/database.module';
 import { providers } from 'src/providers';
 import { CategoryModule } from 'src/category/category.module';
+import { TagModule } from 'src/tag/tag.module';
 
 @Module({
-  imports: [DatabaseModule, CategoryModule],
+  imports: [DatabaseModule, CategoryModule, TagModule],
   controllers: [PostController],
   providers: [...providers, PostService]
 })
