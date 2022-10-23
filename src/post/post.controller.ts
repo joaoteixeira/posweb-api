@@ -3,8 +3,11 @@ import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
+@ApiTags('posts')
+@ApiBearerAuth()
 @Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
