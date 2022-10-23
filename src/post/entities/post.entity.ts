@@ -1,6 +1,6 @@
-import { Tag } from 'src/tag/entities/tag.entity';
 import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from '../../category/entities/category.entity';
+import { Tag } from '../../tag/entities/tag.entity';
 
 @Entity('post')
 export class Post {
