@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
@@ -18,7 +20,8 @@ export class PostController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Request() req, @Param('id') id: string) {
+    console.log(req.user)
     return this.postService.findOne(+id);
   }
 

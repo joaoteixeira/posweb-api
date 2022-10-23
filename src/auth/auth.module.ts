@@ -13,13 +13,15 @@ import { JwtStrategy } from './jwt.strategy';
     DatabaseModule, 
     PassportModule,
     JwtModule.register({
-      secret: '1234567#$%',
+      secret: process.env.JWT_SECRET_KEY,
       signOptions: {
         expiresIn: '5m'
       }
     })
   ],
   controllers: [AuthController],
-  providers: [...providers, AuthService, UserService, JwtStrategy]
+  providers: [
+    ...providers, AuthService, UserService, 
+    JwtStrategy]
 })
 export class AuthModule {}

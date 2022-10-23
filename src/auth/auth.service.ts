@@ -21,22 +21,6 @@ export class AuthService {
     return { accessToken };
   }
 
-  async refreshToken(token: string) {
-    try {
-
-      const tokenDecode = await this.jwtService.verifyAsync(token) as TokenProps;
-
-      const payload = { email: tokenDecode.email, sub: tokenDecode.sub };
-
-      const new_token = this.jwtService.sign(payload);
-
-      return { token: new_token };
-
-    } catch (err) {
-      throw new BadRequestException(err.message);
-    }
-  }
-
   private async validateUser(email: string, password: string) {
     const user = await this.userService.findByEmail(email);
 
@@ -46,4 +30,20 @@ export class AuthService {
 
     return user;  
   }
+
+  // async refreshToken(token: string) {
+  //   try {
+
+  //     const tokenDecode = await this.jwtService.verifyAsync(token) as TokenProps;
+
+  //     const payload = { email: tokenDecode.email, sub: tokenDecode.sub };
+
+  //     const new_token = this.jwtService.sign(payload);
+
+  //     return { token: new_token };
+
+  //   } catch (err) {
+  //     throw new BadRequestException(err.message);
+  //   }
+  // }
 }

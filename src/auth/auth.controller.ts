@@ -13,14 +13,16 @@ export class AuthController {
         return this.authService.login(data);
     }
 
-    @Post('refresh-token')
-    refresh(@Body() data: TokenDto) {
-        return this.authService.refreshToken(data.token);
-    }
+    
 
     @UseGuards(JwtAuthGuard)
     @Get('profile')
     profile(@Request() req) {
         return req.user;
     }
+
+    // @Post('refresh-token')
+    // refresh(@Body() data: TokenDto) {
+    //     return this.authService.refreshToken(data.token);
+    // }
 }
