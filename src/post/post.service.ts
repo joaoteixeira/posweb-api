@@ -3,11 +3,9 @@ import { Repository } from 'typeorm';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { CategoryService } from 'src/category/category.service';
-import { Category } from 'src/category/entities/category.entity';
+import { TagService } from 'src/tag/tag.service';
 import { Post } from './entities/post.entity';
 import slugify from 'slugify';
-import { isArray } from 'class-validator';
-import { TagService } from 'src/tag/tag.service';
 
 @Injectable()
 export class PostService {
@@ -29,9 +27,8 @@ export class PostService {
       ...data,
       slug: slugify(data.title, { lower: true }),
       category: category,
-      tags
+      tags: tags
     });
-    
 
     await this.repository.save(post);
 
