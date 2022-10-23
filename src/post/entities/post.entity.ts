@@ -28,7 +28,7 @@ export class Post {
   @Column()
   createdAt: Date;
 
-  @ManyToOne(type => Category, { eager: true })
+  @ManyToOne(type => Category)
   @JoinColumn()
   category: Category;
 

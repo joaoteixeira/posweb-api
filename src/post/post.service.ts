@@ -23,9 +23,7 @@ export class PostService {
 
     const category = await this.categoryService.findOne(data.category);
 
-
-
-    const tags = await this.tagService.findOne(data.tags);
+    const tags = await this.tagService.findByName(data.tags);
 
     const post = await this.repository.create({
       ...data,
@@ -42,7 +40,7 @@ export class PostService {
 
   async findAll() {
     return await this.repository.find({
-      relations: ['tags']
+      relations: ['category', 'tags']
     });
   }
 
