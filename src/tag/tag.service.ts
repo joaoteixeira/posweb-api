@@ -13,6 +13,8 @@ export class TagService {
   ) { }
 
   async findOne(nameTags: string[]) {
+    if (!nameTags) return [];
+    
     return await Promise.all(
       nameTags.map(async (name) => {
         let tag = await this.repository.findOneBy({ name });

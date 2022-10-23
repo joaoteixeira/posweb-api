@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from '../../category/entities/category.entity';
 import { Tag } from '../../tag/entities/tag.entity';
 
@@ -32,7 +32,9 @@ export class Post {
   @JoinColumn()
   category: Category;
 
-  @ManyToMany(type => Tag)
-  @JoinColumn()
+  @ManyToMany(() => Tag)
+  @JoinTable({
+    name: 'post_tags',
+  })
   tags: Tag[];
 }

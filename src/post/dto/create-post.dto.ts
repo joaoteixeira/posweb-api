@@ -13,5 +13,5 @@ export class CreatePostDto {
 
   category: number;
 
-  tags?: string[];
+  tags: string[];
 }
